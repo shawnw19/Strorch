@@ -1,4 +1,7 @@
+package otherTest;
+
 import org.junit.Test;
+import other.Hello;
 
 import static org.junit.Assert.assertNotNull;
 
