@@ -1,11 +1,15 @@
 package core;
 
+import schema.Attribute;
+import schema.Entity;
+import schema.Type;
+
 import java.util.concurrent.Callable;
 
 public class Functor extends Entity implements Callable {
-    private final EntityType type = EntityType.FUNCTOR;
 
-    public Functor(BasicInformation basicInfo) {
+
+    public Functor(Attribute basicInfo) {
         super();
     }
 

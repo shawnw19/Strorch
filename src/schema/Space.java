@@ -1,18 +1,21 @@
-package core;
+package schema;
 
-import java.util.TreeSet;
+import other.NumericEntity;
 
 /**
  * A space is a basic unit in the "worldz".
+ *
+ * It is based on "Schema" concept in STEP,
+ * but is simplified to a handler for overall control.
  */
 public class Space extends Entity {
 
     //an abstract measure of size, complimentary to physical size
     NumericEntity semanticSize;
 
-    TreeSet<Entity> entities = new TreeSet<Entity>();
+    Enumeration<Entity> entities;
 
-    public Space(BasicInformation basicInfo) {
+    public Space(Attribute basicInfo) {
         super(basicInfo);
     }
 
@@ -20,7 +23,7 @@ public class Space extends Entity {
         return semanticSize;
     }
 
-    public TreeSet<Entity> getEntities() {
+    public Enumeration<Entity> getEntities() {
         return entities;
     }
 }

@@ -1,12 +1,12 @@
-package core;
+package schema;
 
 import java.io.Serializable;
 
 public class Entity implements Cloneable, Serializable {
-    BasicInformation basicInfo;
+    Attribute basicInfo;
 
 
-    public Entity(BasicInformation basicInfo) {
+    public Entity(Attribute basicInfo) {
         this.basicInfo = basicInfo;
     }
 

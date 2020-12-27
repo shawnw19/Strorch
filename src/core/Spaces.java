@@ -1,5 +1,8 @@
 package core;
 
+import schema.Entity;
+import schema.Space;
+
 import java.util.TreeSet;
 
 public class Spaces extends Entity {
