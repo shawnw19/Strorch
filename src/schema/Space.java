@@ -1,6 +1,6 @@
 package schema;
 
-import other.NumericEntity;
+import excluded.NumericEntity;
 
 /**
  * A space is a basic unit in the "worldz".
@@ -15,8 +15,7 @@ public class Space extends Entity {
 
     Enumeration<Entity> entities;
 
-    public Space(Attribute basicInfo) {
-        super(basicInfo);
+    public Space() {
     }
 
     public NumericEntity getSemanticSize() {

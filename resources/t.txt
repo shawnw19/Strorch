@@ -1,0 +1,2 @@
+Remember that these classes can work together to more efficiently handle I/O in Java.
+A BufferedReader is often used to wrap a InputStreamReader which takes an InputStream as input.

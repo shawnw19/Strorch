@@ -1,27 +1,33 @@
 package schema;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
  * "This class maintains a list of the symbolic values that an enumeration is able to assume."
  * The NIST STEP Class Library pp 15.
- * Its is pragmatically similar to List<> with descending priority that the more back
- * the symbol, i.e. an element, is , the less important it is.
- *
- * I hope Enumeartion<Type> can be used to realise union or intersection type (not built-in union type in C)
+ * Its is pragmatically similar to List<> with ascending priority that the more back
+ * the symbol, i.e. an element, is , the more important it is.
+ * <p>
+ * Enumeartion<Type> can be used to realise union type (not built-in union type in C)
  *
  * @param <T>
  */
 public class Enumeration<T> implements java.util.Enumeration {
 
-    LinkedList<T> symbols = new LinkedList<T>();
+    LinkedList<T> symbols;
+    private int currentLocation;
 
-    public Enumeration(LinkedList<T> symbols) {
-        this.symbols = symbols;
+    public Enumeration() {
+        symbols = new LinkedList<T>();
+        this.currentLocation = 0;
     }
 
-    private int currentLocation;
+    public Enumeration(List<T> symbols) {
+        this.symbols = new LinkedList<T>(symbols);
+    }
+
 
     /**
      * Tests if this enumeration contains more elements.
@@ -32,7 +38,12 @@ public class Enumeration<T> implements java.util.Enumeration {
      */
     @Override
     public boolean hasMoreElements() {
-        return currentLocation < symbols.size()-1;
+        if (symbols.isEmpty()) {
+            return false;
+        } else {
+            return currentLocation < symbols.size() - 1;
+        }
+
     }
 
     /**
@@ -44,7 +55,17 @@ public class Enumeration<T> implements java.util.Enumeration {
      */
     @Override
     public T nextElement() {
-        return symbols.get(currentLocation+1);
+        currentLocation++;
+        return symbols.get(currentLocation);
+    }
+
+    public boolean addSymbol(T e) {
+        return symbols.add(e);
+    }
+
+    public boolean removeSymbol(T e) {
+        return symbols.remove(e);
+
     }
 
 }
